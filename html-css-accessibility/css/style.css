@@ -1,0 +1,16 @@
+h1 {
+    font-family:'Franklin Gothic';
+    color: white;
+    background-color: purple;
+    padding: 50px;
+}
+
+.about-section{
+    background-color:lightgray;
+    text-align: center;
+    width: 50%;
+}
+
+/* p {
+    color:green
+} */
