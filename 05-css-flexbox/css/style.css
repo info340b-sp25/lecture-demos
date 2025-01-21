@@ -18,10 +18,28 @@ nav a {
   color: white;
 }
 
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap:wrap;
+}
+
+nav li {
+  display: inline;
+  margin: .25em;
+}
+
 
 /* about section */
 .about-section {
   background-color: #f8f8f8;
+}
+
+.about-section p {
+  font-family: "Edu AU VIC WA NT Hand", cursive;
+  font-size: 1em;
+  padding: 0;
+  margin: 1em 0;
 }
 
 .about-section img {
@@ -30,8 +48,18 @@ nav a {
 
 
 /* topics cards */
+.card-deck {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+}
+
 .topics-section .card {
   border: 1px solid black;
+  flex-grow: 1;
+  padding: 10px;
+  margin: 3px;
+  text-align: center;
 }
 
 .topics-section img {
@@ -41,4 +69,7 @@ nav a {
 /* other */
 footer {
   font-size: smaller;
+  border: solid;
+  padding: .5em;
+  margin: .5em 0;
 }
