@@ -20,8 +20,29 @@ img {
   background-color: white;
 }
 
+h1, h2 {
+  cursor: wait;
+}
+
 /* elements with class="about-section" */
 .about-section {
   background-color: #eee;
   padding: .25em .5em;
+}
+
+.about-section p {
+  font-family: "Papyrus";
+}
+
+.about-section h2:hover {
+  border: solid black 2px;
+}
+
+a:hover {
+  text-decoration: none;
+  font-size: large;
+}
+
+a:visited {
+  color: blue;
 }
