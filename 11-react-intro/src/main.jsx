@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-const my_name = "Kyle"
-
 import {App} from './components/App.jsx';
 
 //Create a "React root" out of the `#root` elemment

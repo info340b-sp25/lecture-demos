@@ -1,9 +1,10 @@
 import {HelloMessage} from './HelloMessage'
 
 export function HeaderComponent(props) {
+    const {name} = props;
     return (
         <header>
-            <HelloMessage />
+            <HelloMessage name={name} />
         </header>
     )
 }

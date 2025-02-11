@@ -1,6 +1,6 @@
 export function HelloMessage(props) {
-    const my_name = "Kyle2"
+    const {name} = props;
     return (
-        <h1 id='hello' className='myClass'>'Hello {my_name}!'</h1>
+        <h1 id='hello' className='myClass'>'Hello {name}!'</h1>
     )
 }
