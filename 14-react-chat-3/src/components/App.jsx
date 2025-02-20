@@ -6,6 +6,13 @@ import { ChatPane } from './ChatPane.jsx';
 
 import INITIAL_CHAT_LOG from '../data/chat_log.json'
 
+const DEFAULT_USERS = [
+  {userId: null, userName: null, userImg: '/img/null.png'}, //null user
+  {userId: "penguin", userName: "Penguin", userImg: '/img/Penguin.png'},
+  {userId: "parrot", userName: "Parrot", userImg: '/img/Parrot.png'},
+  {userId: "zebra", userName: "Zebra", userImg: '/img/Zebra.png'},  
+]
+
 function App(props) {
 
   const channelNames = ["general", "channel-2", "birds", "dank-memes", "random"]
@@ -55,7 +62,7 @@ function App(props) {
 
   return (
     <div className="container-fluid d-flex flex-column">
-      <HeaderBar />
+      <HeaderBar usersData={DEFAULT_USERS} />
       <div className="row flex-grow-1">
         <div className="col-3">
           <ChannelList 
