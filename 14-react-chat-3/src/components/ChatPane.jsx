@@ -6,7 +6,7 @@ import { ComposeForm } from './ComposeForm.jsx';
 export function ChatPane(props) {
   console.log("rendering chatpane")
   const { currentChannel, msgStateArray, 
-    addMessage } = props;
+    addMessage, currentUser} = props;
 
   /* RENDERING: what do we look like */
 
@@ -38,7 +38,11 @@ export function ChatPane(props) {
         {messageItemArray}
       </div>
 
-      <ComposeForm currentChannel={currentChannel} addMessageFunction={addMessage} />
+      <ComposeForm 
+        currentChannel={currentChannel} 
+        addMessageFunction={addMessage} 
+        currentUser={currentUser}
+      />
       </>
   )
 }

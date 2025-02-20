@@ -1,7 +1,8 @@
 import React from 'react';
 
 export function HeaderBar(props) {
-  const {usersData} = props;
+  const {usersData, loginUser, 
+    currentUser} = props;
 
   //event handler
   const handleClick = (event) => {
@@ -9,12 +10,16 @@ export function HeaderBar(props) {
     const selectedUserObj = usersData.filter((userObj) => userObj.userId === whichUser)[0] || usersData[0] //null user if not found
 
     console.log(selectedUserObj);
-    //do something with userObj!
+    loginUser(selectedUserObj);
   }
 
   //for convenience
   const userButtons = usersData.map((userObj) => {
     let classListString = "btn user-icon"
+
+    if(userObj.userId == currentUser.userId){
+      classListString += " bg-success"
+    }
 
     return (
       <button className={classListString} key={userObj.userName} 

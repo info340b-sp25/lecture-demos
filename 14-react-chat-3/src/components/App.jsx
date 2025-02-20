@@ -21,6 +21,16 @@ function App(props) {
   const [msgStateArray, setMsgStateArray] = useState(INITIAL_CHAT_LOG); 
   console.log(msgStateArray);
 
+  const [currentUser, setCurrentUser] = useState(DEFAULT_USERS[0]);
+  console.log("currentUser", currentUser);
+
+  // we want to control when setCurrentUser() is called
+  // so we make a new function
+  const loginUser = (userObj) => {
+    // I can add validation steps or debugging here
+    setCurrentUser(userObj);
+  }
+
   /* STATE MANAGEMENT: how do we change */
   const addMessage = function(userObj, messageText, channel) {
     console.log("addmsg")
@@ -62,7 +72,11 @@ function App(props) {
 
   return (
     <div className="container-fluid d-flex flex-column">
-      <HeaderBar usersData={DEFAULT_USERS} />
+      <HeaderBar 
+        usersData={DEFAULT_USERS} 
+        loginUser={loginUser} 
+        currentUser={currentUser}
+      />
       <div className="row flex-grow-1">
         <div className="col-3">
           <ChannelList 
@@ -76,6 +90,7 @@ function App(props) {
             currentChannel={currentChannel}
             msgStateArray={msgStateArray} 
             addMessage={addMessage}
+            currentUser={currentUser}
           />
         </div>
       </div>
