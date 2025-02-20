@@ -2,30 +2,11 @@ import React, {useState} from 'react';
 
 import { ComposeForm } from './ComposeForm.jsx';
 
-import INITIAL_CHAT_LOG from '../data/chat_log.json'
 
 export function ChatPane(props) {
   console.log("rendering chatpane")
-  const { currentChannel } = props;
-
-  const [msgStateArray, setMsgStateArray] = useState(INITIAL_CHAT_LOG); 
-  console.log(msgStateArray);
-
-  /* STATE MANAGEMENT: how do we change */
-  const addMessage = function(userObj, messageText, channel) {
-    console.log("addmsg")
-    const newMessage = {
-      "userId": userObj.userId,
-      "userName": userObj.userName,
-      "userImg": userObj.userImg,
-      "text": messageText,
-      "timestamp": Date.now(),
-      "channel": channel
-    }
-    console.log(newMessage);
-    const newArray = [...msgStateArray, newMessage];
-    setMsgStateArray(newArray); //update the board & re-render
-  }
+  const { currentChannel, msgStateArray, 
+    addMessage } = props;
 
   /* RENDERING: what do we look like */
 
