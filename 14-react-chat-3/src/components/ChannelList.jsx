@@ -1,7 +1,8 @@
 import React from 'react';
 
 export function ChannelList(props) {
-  const {channelNames, currentChannel} = props;
+  const {channelNames, currentChannel, 
+    channelMsgCounts} = props;
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -18,7 +19,8 @@ export function ChannelList(props) {
     const transformed = (
       <li className={classListString} key={channelNameString}>
         <a name={channelNameString} href={"/"+channelNameString} onClick={handleClick}>
-          {channelNameString}
+          {channelNameString} 
+          ({channelMsgCounts[channelNameString] || 0})
         </a>
       </li>
     );
