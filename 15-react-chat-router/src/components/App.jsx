@@ -31,22 +31,33 @@ function App(props) {
     setCurrentUser(newUserObj);
   }
 
-  return (
-    <div className="container-fluid d-flex flex-column">
-      <HeaderBar currentUser={currentUser} />
+  const currentUrl = window.location.pathname;
 
-      {/* <Static.WelcomePage /> */}
-      {/* <ChatPage 
+  let mainContent = null;
+  if(currentUrl == "/"){
+    mainContent = <Static.WelcomePage />
+  } else if(currentUrl === '/chat') {
+    mainContent = <ChatPage 
         currentUser={currentUser} 
         messageArray={messageStateArray}
         addMessageFunction={addMessage}
-        /> */}
-      {/* <Static.AboutPage /> */}
+        />
+  } else if(currentUrl === "/about"){
+    mainContent = <Static.AboutPage />
+  } else if (currentUrl === "/signin"){
+    mainContent = 
       <SignInPage 
         currentUser={currentUser} 
         changeUserFunction={changeUser} 
       />
-      {/* <Static.ErrorPage /> */}
+  } else {
+    mainContent = <Static.ErrorPage />
+  }
+
+  return (
+    <div className="container-fluid d-flex flex-column">
+      <HeaderBar currentUser={currentUser} />
+      {mainContent}
     </div>
   );
 }
