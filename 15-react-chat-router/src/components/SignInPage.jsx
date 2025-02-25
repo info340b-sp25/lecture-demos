@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Dropdown from 'react-bootstrap/Dropdown';
+
 import DEFAULT_USERS from '../data/users.json';
 
 export default function SignInPage(props) {
@@ -15,15 +17,16 @@ export default function SignInPage(props) {
 
   //convenience
   //for convenience
-  const userButtons = DEFAULT_USERS.map((userObj) => {
+  const userDropdownItems = DEFAULT_USERS.map((userObj) => {
     let classListString = "btn user-icon"
 
     return (
-      <button className={classListString} key={userObj.userName} 
+      <Dropdown.Item className={classListString} key={userObj.userName} 
         name={userObj.userId} onClick={handleClick}
       >
         <img src={userObj.userImg} alt={userObj.userName + " avatar"} />
-      </button>
+        {userObj.userName}
+      </Dropdown.Item>
     )
   })
 
@@ -31,9 +34,18 @@ export default function SignInPage(props) {
     <div className="card bg-light">
       <div className="container card-body">
         <p className="lead">Pick a user:</p>
-        <div>
-          {userButtons}
-        </div>
+        <Dropdown>
+          <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+            Choose a User
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            {userDropdownItems}
+            {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
     </div>
   )

@@ -36,13 +36,16 @@ function App(props) {
       <HeaderBar currentUser={currentUser} />
 
       {/* <Static.WelcomePage /> */}
-      <ChatPage 
+      {/* <ChatPage 
         currentUser={currentUser} 
         messageArray={messageStateArray}
         addMessageFunction={addMessage}
-        />
+        /> */}
       {/* <Static.AboutPage /> */}
-      <SignInPage currentUser={currentUser} changeUserFunction={changeUser} />
+      <SignInPage 
+        currentUser={currentUser} 
+        changeUserFunction={changeUser} 
+      />
       {/* <Static.ErrorPage /> */}
     </div>
   );
