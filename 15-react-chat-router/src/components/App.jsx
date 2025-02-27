@@ -29,6 +29,12 @@ function App(props) {
     setMessageStateArray(newArray); //update state & re-render
   }
 
+  const likeMessage = (messageObj, isLiked) => {
+    messageObj.isLiked = isLiked;
+    const newArray = [...messageStateArray];
+    setMessageStateArray(newArray); //update state & re-render
+  }
+
   const changeUser = (newUserObj) => {
     setCurrentUser(newUserObj);
   }
@@ -46,6 +52,7 @@ function App(props) {
               currentUser={currentUser} 
               messageArray={messageStateArray}
               addMessageFunction={addMessage}
+              likeMessageFunction={likeMessage}
             />
           }
         />

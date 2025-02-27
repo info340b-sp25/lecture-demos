@@ -5,7 +5,9 @@ import { ComposeForm } from './ComposeForm.jsx';
 export function ChatPane(props) {
 
   const { messageArray, currentChannel, 
-    addMessageFunction, currentUser } = props;
+    addMessageFunction, currentUser,
+    likeMessageFunction } = props;
+    console.log("ChatPane props", props);
 
   //RENDERING: what do we look like
 
@@ -19,7 +21,10 @@ export function ChatPane(props) {
   //* displaying display - what does it look like *//
   //DOM content [<MessageItem/>, <MessageItem/>]
   const messageItemArray = messagesToShow.map((messageObj) => {
-    const elem = <MessageItem messageData={messageObj} key={messageObj.timestamp} />
+    const elem = <MessageItem 
+      messageData={messageObj} 
+      key={messageObj.timestamp}
+      likeMessageFunction={likeMessageFunction} />
     return elem; //put it in the new array!
   });
 
@@ -43,12 +48,15 @@ export function ChatPane(props) {
 }
 
 function MessageItem(props) {
-  const { userName, userImg, text } = props.messageData;
+  const {likeMessageFunction, messageData} = props;
+  const { userName, userImg, 
+    text, isLiked } = messageData;
 
-  const [isLiked, setIsLiked] = useState(false);
+    console.log("MessageItem props", props);
+  //const [isLiked, setIsLiked] = useState(false);
 
   const handleClick = function(event) {
-    setIsLiked(!isLiked);
+    likeMessageFunction(messageData, !isLiked);
   }
 
 
