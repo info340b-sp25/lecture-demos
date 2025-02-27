@@ -1,22 +1,15 @@
 import React from 'react';
 
-import {useParams} from 'react-router-dom';
-
 import {Link} from 'react-router-dom';
 
 export function ChannelList(props) {
-  const { channelNames } = props;
-
-  const urlParamsObj = useParams();
-  console.log("urlParamsObj", urlParamsObj);
-
-  const currentChannel = urlParamsObj.whichChannel;
+  const { channelNames, currentChannel } = props;
 
   //render the links
   const liArray = channelNames.map((channelNameString) => {
     return (
       <div key={channelNameString}>
-        <Link className={channelNameString == urlParamsObj.whichChannel ?
+        <Link className={channelNameString == currentChannel ?
           "px-2 bg-success" :
           "px-2"
         }
