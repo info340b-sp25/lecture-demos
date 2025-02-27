@@ -11,6 +11,18 @@ import * as Static from './StaticPages.jsx';
 import INITIAL_HISTORY from '../data/chat_log.json'
 import DEFAULT_USERS from '../data/users.json';
 
+// import EagleImg from './img/Eagle.png'
+// import ParrotImg from './img/Parrot.png'
+
+// DEFAULT_USERS.map((userInfo) => {
+//   if(userInfo.userImg == "/img/Parrot.png"){
+//     userInfo.userImg = ParrotImg;
+//   } else if(userInfo.userImg == "/img/Eagle.png"){
+//     userInfo.userImg = EagleImg;
+//   }
+// })
+
+
 function App(props) {
   const [messageStateArray, setMessageStateArray] = useState(INITIAL_HISTORY);
   const [currentUser, setCurrentUser] = useState(DEFAULT_USERS[1]) //initialize;
