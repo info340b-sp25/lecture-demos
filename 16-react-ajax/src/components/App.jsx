@@ -25,17 +25,29 @@ function App(props) {
     const url = "https://api.github.com/search/repositories?q=" + 
        queryInput + "&sort=stars" 
 
-    //start my data request fetch
-    fetch(url)
-      .then((results) => {
-        console.log("B: results of the fetch are: ", results)
-        // so now we do a new action to get the data from the request
-        return results.json();
-      })
-      .then((jsonData) => {
-        console.log("C: json Data returned:", jsonData);
-        setStateData(jsonData.items) // put the items in state
-      })
+    //start my data request fetch (promise version)
+    // fetch(url)
+    //   .then((results) => {
+    //     console.log("B: results of the fetch are: ", results)
+    //     // so now we do a new action to get the data from the request
+    //     return results.json();
+    //   })
+    //   .then((jsonData) => {
+    //     console.log("C: json Data returned:", jsonData);
+    //     setStateData(jsonData.items) // put the items in state
+    //   })
+
+    try{
+      // fetch data (using await)
+      const response = await fetch(url);
+      console.log("B: results of the fetch are: ", response)
+      const jsonData = await response.json();
+      console.log("C: json Data returned:", jsonData);
+      setStateData(jsonData.items) // put the items in state
+    }catch(error){
+      console.log("We got an error:", error);
+    }
+
 
     console.log("D: the data request fetch has been started")
 
