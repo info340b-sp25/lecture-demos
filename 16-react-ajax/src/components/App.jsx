@@ -19,9 +19,25 @@ function App(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("submitting form");
+    console.log("A: submitting form");
 
     //do something with form input!
+    const url = "https://api.github.com/search/repositories?q=" + 
+       queryInput + "&sort=stars" 
+
+    //start my data request fetch
+    fetch(url)
+      .then((results) => {
+        console.log("B: results of the fetch are: ", results)
+        // so now we do a new action to get the data from the request
+        return results.json();
+      })
+      .then((jsonData) => {
+        console.log("C: json Data returned:", jsonData);
+        setStateData(jsonData.items) // put the items in state
+      })
+
+    console.log("D: the data request fetch has been started")
 
   }
 
@@ -37,7 +53,11 @@ function App(props) {
     <div className="container">
       <header><h1>AJAX Demo</h1></header> 
 
-      <form method="GET" action="https://api.github.com/search/repositories">
+      <form 
+        method="GET" 
+        action="https://api.github.com/search/repositories"
+        onSubmit={handleSubmit}
+      >
         <input type="text" className="form-control mb-2" 
           name="q"
           placeholder="Search Github for..."
