@@ -22,6 +22,7 @@ const firebaseConfig = {
   appId: "fake_app_id"
 };
 
+
 // Initialize Firebase
 initializeApp(firebaseConfig);
 

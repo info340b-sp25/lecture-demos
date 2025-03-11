@@ -1,11 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { getAuth, signOut } from 'firebase/auth';
+
 export function HeaderBar(props) {
   const currentUser = props.currentUser;
 
   const handleSignOut = (event) => {
     console.log("signing out");
+    const auth = getAuth();
+    signOut(auth);
   }
 
   return (

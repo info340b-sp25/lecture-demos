@@ -2,12 +2,32 @@ import React from 'react';
 
 import Dropdown from 'react-bootstrap/Dropdown';
 
+import StyleFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+
 import DEFAULT_USERS from '../data/users.json';
 
 
 export default function SignInPage(props) {
 
   const { currentUser, changeUserFunction } = props;
+
+  const auth = getAuth();
+
+  const firebaseUIConfig = {
+    signInOptions: [
+      GoogleAuthProvider.PROVIDER_ID, 
+      {provider: EmailAuthProvider.PROVIDER_ID, requiredDisplayName: true}
+    ],
+    signInFlow: 'popup', // don't redirect to authenticate
+    credentialHelper: 'none', // don't show the email account chooser
+    callbacks: { // "lifecycle" callbacks
+      signInSuccessWithAuthResult: () => {
+        return false; // don't redirect after authentication
+      }
+    }
+  }
+
 
   const handleClick = (event) => {
     const whichUser = event.currentTarget.name //access button, not image
@@ -34,7 +54,7 @@ export default function SignInPage(props) {
   return (
     <div className="card bg-light">
       <div className="container card-body">
-
+        <StyleFirebaseAuth firebaseAuth={auth} uiConfig={firebaseUIConfig} />
         <p className="lead">Pick a user:</p>
         <Dropdown>
           <Dropdown.Toggle variant="light">
