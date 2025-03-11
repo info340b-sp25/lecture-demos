@@ -29,7 +29,13 @@ function App(props) {
         // make firebase user match our expectations about user data field names
         firebaseUser.userId = firebaseUser.uid;
         firebaseUser.userName = firebaseUser.displayName;
-        firebaseUser.userImg = firebaseUser.photoURL || '/img/null.png'
+        firebaseUser.userImg = '/img/null.png'
+        const db = getDatabase();
+        const imgRef = ref(db, "profiles/"+firebaseUser.userId+"/profilePic")
+        onValue(imgRef, (snapshot) => {
+          firebaseUser.userImg = snapshot.val() || '/img/null.png'
+          setCurrentUser(firebaseUser)
+        });
 
         setCurrentUser(firebaseUser)
       } else {

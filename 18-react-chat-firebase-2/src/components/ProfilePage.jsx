@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+import {getDatabase, ref as dbRef, set as dbSet} from 'firebase/database';
+
+
 export default function ProfilePage(props) {
   const { currentUser } = props;
   //convenience
@@ -19,6 +22,21 @@ export default function ProfilePage(props) {
 
   const handleImageUpload = (event) => {
     console.log("Uploading", imageFile);
+
+    //config: create a file reader and callback for what to do when the file is read
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      //get the read file (read as dataURL and get its url
+      const dataUrl = e.currentTarget.result
+      
+      //you can put this data url into the firebase db
+      const db = getDatabase();
+      const imgRef = dbRef(db, "profiles/"+currentUser.userId+"/profilePic")
+      dbSet(imgRef, dataUrl)
+    }
+
+    //call this function to read the file (and trigger the above callback)
+    reader.readAsDataURL(imageFile) //initiate the reader
   }
 
   return (
