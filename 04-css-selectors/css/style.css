@@ -25,3 +25,9 @@ img {
   background-color: #eee;
   padding: .25em .5em;
 }
+
+/* applies to <h2> elements within the link-section */
+/* demo CSS selectors shown in "inspect", in chrome */
+.link-section h2 {
+  color: chartreuse;
+}
