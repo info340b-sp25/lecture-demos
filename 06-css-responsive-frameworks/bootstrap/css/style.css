@@ -1,10 +1,13 @@
 /* empty! (mostly) */
 
+nav {
+  background-color: rebeccapurple;
+}
 /* keep images small enough to work with */
 .about-section img {
   max-width: 150px;
 }
 
 .card-box img {
-  max-width: 150px;
+  max-width: 100px;
 }

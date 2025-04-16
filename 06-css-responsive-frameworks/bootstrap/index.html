@@ -3,22 +3,30 @@
 <head>
   <meta charset="UTF-8" >
   <meta name="author" content="INFO 340">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Demo: INFO 340 Home Page (Bootstrap)</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <!-- Need to include for interactive bootscript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <nav>
+    <div class="container">
     <ul>
       <li><a href="https://canvas.uw.edu/courses/1719809">Canvas</a></li>
       <li><a href="https://info340.github.io/">Textbook</a></li>
       <li><a href="https://developer.mozilla.org/en-US/">MDN (reference)</a></li>
       <li><a href="https://ischool.uw.edu">iSchool</a></li>
     </ul>
+    </div>
   </nav>
 
-  <header>
+  <!-- margin, go from 2 on small devices, add more when we get to large devices -->
+  <!-- <header class="page-header m-1 m-sm-2 m-lg-5"> -->
+  <header class="page-header m-1 m-sm-3 m-lg-5">
     <h1>INFO 340</h1>
     <p>Client Side Web Development</p>
     <p>
@@ -26,8 +34,12 @@
     </p>
   </header>
 
+  <!-- containers have a specific bootstrap meaning
+    -->
   <main>
-    <section class="about-section">
+    <!-- makes specific jumps at device sizes -->
+     <!-- Never put a container inside a container -->
+    <section class="about-section container">
       <h2>About The Course</h2>
       <p>This course will teach you the skills and techniques necessary for creating sophisticated and accessible interactive web applications. Upon completing this course, students will be able to build robust web applications, and will have the foundation for independently learning new skills in the ever-changing world of web development.</p>
     
@@ -36,33 +48,40 @@
       </p>
     </section>
     
-    <section class="topics-section">
+    <!-- Rows need to be inside a container -->
+    <section class="topics-section container">
       <h2>Technologies Learned</h2>
       <p>
-        <button>Hide All</button>
+        <button class="btn btn-primary"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseEx">Hide All</button>
       </p>
-      <div class="card-box">
-        <div>
+          <!-- Once we specify a row, we can decide how many columns we want each element to take up -->
+
+      <div class="card-box row" id="collapseEx">
+        <!-- Add col-sm-6 to make it take up 6 columns once we get to a small screen -->
+
+        <div class="col-12 col-sm-6">
           <img src="img/html-icon.png" alt="html 5 logo">
           <h3>Hypertext Markup Language</h3>
         </div>
 
-        <div>
+        <div class="col-12 col-sm-6">
           <img src="img/css-icon.png" alt="css 3 logo">
           <h3>Cascading Style Sheets </h3>
         </div>
 
-        <div>
+        <div class="col-12">
           <img src="img/js-icon.png" alt="javascript logo">
           <h3>JavaScript</h3>
         </div>
-
-        <div>
+        <!-- We've done 12, wrap around to next line  -->
+        <div class="col-12 col-sm-6">
           <img src="img/react-icon.png" alt="react logo">
           <h3>React</h3>
         </div>
 
-        <div>
+        <div class="col-12 col-sm-6">
           <img src="img/firebase-icon.png" alt="firebase logo">
           <h3>Firebase</h3>
         </div>

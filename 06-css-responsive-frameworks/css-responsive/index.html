@@ -3,22 +3,25 @@
 <head>
   <meta charset="UTF-8" >
   <meta name="author" content="INFO 340">
+  <!-- don't let the page get too wide, don't shrink the page to fit the device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Demo: INFO 340 Home Page</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <nav>
+  <nav class="">
     <ul>
       <li><a href="https://canvas.uw.edu/courses/1719809">Canvas</a></li>
       <li><a href="https://info340.github.io/">Textbook</a></li>
-      <li><a href="https://developer.mozilla.org/en-US/">MDN (reference)</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/">MDN <div>(reference)</div></a></li>
       <li><a href="https://ischool.uw.edu">iSchool</a></li>
     </ul>
   </nav>
 
-  <header>
+  <!-- only padding of 2 on larger size or larger -->
+  <header class="page-header text-light p-md-10">
     <h1>INFO 340</h1>
     <p>Client Side Web Development</p>
   </header>
