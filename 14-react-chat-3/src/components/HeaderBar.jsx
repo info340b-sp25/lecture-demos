@@ -1,20 +1,22 @@
 import React from 'react';
 
 const DEFAULT_USERS = [
-  {userId: null, userName: null, userImg: '/img/null.png'}, //null user
-  {userId: "penguin", userName: "Penguin", userImg: '/img/Penguin.png'},
-  {userId: "parrot", userName: "Parrot", userImg: '/img/Parrot.png'},
-  {userId: "zebra", userName: "Zebra", userImg: '/img/Zebra.png'},  
-]
+    {userId: null, userName: null, userImg: '/img/null.png'}, //null user
+    {userId: "penguin", userName: "Penguin", userImg: '/img/Penguin.png'},
+    {userId: "parrot", userName: "Parrot", userImg: '/img/Parrot.png'},
+    {userId: "zebra", userName: "Zebra", userImg: '/img/Zebra.png'},  
+  ]
 
 export function HeaderBar(props) {
-
+  const changeCurrentUser = props.changeCurrentUser;
+  
   //event handler
   const handleClick = (event) => {
     const whichUser = event.currentTarget.name //access button, not image
     const selectedUserObj = DEFAULT_USERS.filter((userObj) => userObj.userId === whichUser)[0] || DEFAULT_USERS[0] //null user if not found
 
     console.log(selectedUserObj);
+    changeCurrentUser(selectedUserObj);
     //do something with userObj!
   }
 

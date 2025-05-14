@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export function ComposeForm(props) {
-  const { addMessageFunction, currentChannel } = props;
+  const { addMessageFunction, currentChannel, currentUser } = props;
 
   const [inputtedText, setInputtedText] = useState('');
 
@@ -14,9 +14,8 @@ export function ComposeForm(props) {
   //submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    const userObj = { userId: "parrot", userName: "Parrot", userImg: "/img/Penguin.png" }
 
-    addMessageFunction(userObj, inputtedText, currentChannel);   
+    addMessageFunction(currentUser, inputtedText, currentChannel);   
     setInputtedText('');
   }
 

@@ -6,7 +6,7 @@ import INITIAL_CHAT_LOG from '../data/chat_log.json'
 
 export function ChatPane(props) {
   console.log("rendering chatpane")
-  const { currentChannel } = props;
+  const { currentChannel, currentUser } = props;
 
   const [msgStateArray, setMsgStateArray] = useState(INITIAL_CHAT_LOG); 
   console.log(msgStateArray);
@@ -57,7 +57,8 @@ export function ChatPane(props) {
         {messageItemArray}
       </div>
 
-      <ComposeForm currentChannel={currentChannel} addMessageFunction={addMessage} />
+      <ComposeForm currentChannel={currentChannel} currentUser={currentUser} 
+                   addMessageFunction={addMessage} />
       </>
   )
 }
@@ -66,12 +67,15 @@ function MessageItem(props) {
   const msgObj = props.messageData;
   const {userName, userImg, text} = msgObj;
 
+  const [messageLiked, setMessageLiked] = useState(false);
+
   const handleClick = (event) => {
     console.log("You like a post by "+userName);
+    setMessageLiked(!messageLiked);
   }
-
-  let buttonColor = "grey";
-
+ 
+  let buttonColor = (messageLiked) ? "red" : "grey";
+  
   return (
    <div className="message d-flex mb-3">
     <div className="me-2">
