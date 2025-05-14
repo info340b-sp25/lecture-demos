@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { ComposeForm } from './ComposeForm.jsx';
 
@@ -7,8 +7,10 @@ import INITIAL_CHAT_LOG from '../data/chat_log.json'
 export function ChatPane(props) {
   console.log("rendering the ChatPane")
 
+  const [msgStateArray, setMsgStateArray] = useState(INITIAL_CHAT_LOG)
+
   //data: an array of message objects [{}, {}]
-  const messageObjArray = INITIAL_CHAT_LOG
+  const messageObjArray = msgStateArray
     .sort((m1, m2) => m1.timestamp - m2.timestamp); //chron order
 
   //views: DOM content [<MessageItem/>, <MessageItem/>]
@@ -17,13 +19,41 @@ export function ChatPane(props) {
       return elem; //put it in the new array!
   });
 
+  
+
+
+  const addMessage = (text) => {
+    const message = {
+      "userId": "penguin",
+      "userName": "Penguin", 
+      "userImg": "/img/Penguin.png",
+      "text": text,
+      "channel": "general",
+      "timestamp": Date.now()
+    }
+    const newMsgStateArray = [...msgStateArray, message]
+    setMsgStateArray(newMsgStateArray)
+  }
+
+  const [messageArray, setMessageArray] = useState(['hiss']);
+  // Every time "click me!" is pressed, add an "s" to the hiss message,
+  // which should display below the button (instead of 'you clicked me...')
+  const [numClicks, setNumClicks] = useState(0);
+  console.log("rendered numClicks", numClicks);
+
+  const handleClick = (event) => {
+    setNumClicks(numClicks + 1);
+    messageArray[0] += 's'
+    setMessageArray(messageArray);
+  }
+
   return (
     <>
       <div className="scrollable-pane">
         {/* button demo */}
         <div className="pt-2 my-2">
-          <button className="btn btn-success">Click me!</button>
-          <p>You clicked me X times</p>
+          <button onClick={handleClick} className="btn btn-success">Click me!</button>
+          <p>{messageArray}</p>
         </div>
         <hr/>
 
@@ -31,7 +61,7 @@ export function ChatPane(props) {
         {messageItemArray}
       </div>
 
-      <ComposeForm />
+      <ComposeForm addToMessageFunction={addMessage}/>
     </>
   )
 }
